@@ -1,0 +1,21 @@
+
+<p id="notice"><%= notice %></p>
+<body class="login_body" >
+
+<div class="log_in_and_sign_up"> 
+
+<p>
+  <strong>Tenant id:</strong>
+  <%= @tenant.id %>
+</p>
+
+<p>
+  <strong>Subdomain:</strong>
+  <%= @tenant.subdomain %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_tenant_path(@tenant) %> |
+<%= link_to 'Back', superadminhome_url %>
+</div></body>

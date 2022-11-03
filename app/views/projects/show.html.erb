@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+<body class="login_body" >
+
+<div class="log_in_and_sign_up"> 
+<h2 class="log_in_statement"><%=@project.Project_name%></h2>
+<p>
+  <strong>Project name:</strong>
+  <%= @project.Project_name %>
+</p>
+
+<p>
+  <strong>Client name:</strong>
+  <%= @project.Client_name %>
+</p>
+
+<p>
+  <strong>Client email:</strong>
+  <%= @project.client_email %>
+</p>
+
+<p>
+  <strong>Service Provider</strong>
+  <%= @project.service_provider %>
+</p>
+
+<p>
+  <strong>Developers:</strong>
+  <%= @project.Developers %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @project.Status %>
+</p>
+
+<p>
+  <strong>Invoice status:</strong>
+  <%= @project.Invoice_status %>
+</p>
+
+<p>
+  <strong>Working hours:</strong>
+  <%= @project.Working_hours %>
+</p>
+
+<p>
+  <strong>Starting date:</strong>
+  <%= @project.Starting_date %>
+</p>
+
+<!-- <p>
+  <strong>User:</strong>
+  <%= @project.user_id %>
+</p> -->
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<!-- <#%= link_to 'Back', projects_path %> -->
+<%= link_to "Back", if(@user.role_id==1) then user_admin_dashboard_url elsif (@user.role_id==2) then user_client_home_dashboard_url elsif (@user.role_id==5) then user_developer_dashboard_path else user_service_provider_home_dashboard_url end  %>
+</div></body>

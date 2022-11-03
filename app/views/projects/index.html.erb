@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<%if @user.role_id== 1%> 
+<%= render 'adminprojectview', project: @project %>
+ <%elsif @user.role_id== 2%>
+<%= render 'clientprojectview', project: @project %>
+<%else%>
+<%= render 'spprojectview', project: @project %>
+<%end%>  

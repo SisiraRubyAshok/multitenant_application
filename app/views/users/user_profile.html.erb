@@ -1,0 +1,75 @@
+<div class="main_data_section_view">
+<div class="home_main_div_section">
+<div class="home_main_links_section">
+<div class="row headers_section">
+<div class=" col-md-4 header_first" style="font-weight:bold;font-size:30px;top:5px;font-family:Open Sans, Arial, Helvetica, sans-serif;">Invoice Payment</div>
+<div class=" col-md-4 header_middle" style="">
+<div class="row" style="position:relative;top:10px;">
+<div class="col-md-3 home_link" style="cursor:pointer;">Home</div>
+<!--<div class="col-md-3 projects_link" style="cursor:pointer;" >Projects</div>
+<div class="col-md-3 invoice_link" style="cursor:pointer;" >Generated Invoices</div>
+<div class="Service_providers" style="cursor:pointer;" >clients</div>-->
+</div>
+</div>
+<div class="col-md-4 header_last" style="">
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-3"></div>
+<div class="col-md-2"></div>
+<div class="col-md-2">
+<%= link_to user_profile_way_url do%>
+<span class="glyphicon glyphicon-user gi-5x " title="User Profile" style="color:white;font-size:34px;position:relative;top:6px;cursor:pointer;">
+</span>
+<%end%>
+</div>
+<div class="col-md-2">
+<%= link_to destroy_user_session_path, :method => :delete do%>
+<span class="glyphicon glyphicon-off gi-5x _home_sign_out" title="Sign Out" style="color:white;font-size:34px;position:relative;top:8px;cursor:pointer;">
+</span>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+
+<div class="login_body">
+  <div class="log_in_and_sign_up" style="position: fixed;top: 40%;left: 50%; transform: translate(-50%, -50%);
+padding:20px;width:23%; align-items: center;">
+
+
+<div><strong>USER PROFILE</strong></div>
+<br>
+<%if @user.avatar?%>
+<p class="w3-panel w3-round-xxlarge w3-teal">
+    <%= image_tag @user.avatar.url%>
+</p>
+<% end -%>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @user.first_name %>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Role</strong>
+
+  <% if @user.role_id == 1%>
+  admin
+  <%elsif @user.role_id ==2 %>
+  client
+  <%else%>
+   Service provider
+  <%end %>
+</p>
+<%= link_to 'Edit', edit_user_url(@user) %> 
+<br>
+ <%= link_to "Back", if(@user.role_id==1) then user_admin_dashboard_url elsif (@user.role_id==2) then user_client_home_dashboard_url elsif (@user.role_id==5) then user_developer_dashboard_path else user_service_provider_home_dashboard_url end  %>
+<!-- </div> -->
+</div>
+</div></div>

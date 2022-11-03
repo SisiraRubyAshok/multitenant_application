@@ -1,0 +1,15 @@
+<!-- <h1>Editing Project</h1> -->
+<body class="login_body" >
+
+<div class="log_in_and_sign_up"> 
+<h2 class="log_in_statement">Edit Project</h2>
+
+<%= render 'form', project: @project %>
+
+
+<!-- <#%= link_to 'Show', @project %> 
+<#%= link_to 'Back', project_path %> -->
+<%= link_to "Back", if(@user.role_id==1) then user_admin_dashboard_url elsif (@user.role_id==2) then user_client_home_dashboard_url elsif (@user.role_id==5) then user_developer_dashboard_path else user_service_provider_home_dashboard_url end  %>
+</div></body>
+
+

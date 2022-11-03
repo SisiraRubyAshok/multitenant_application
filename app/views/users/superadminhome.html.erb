@@ -1,0 +1,81 @@
+<div id="client_dash_board" class="main client_home_dash_board_section">
+
+<div class="side_navigation">
+Client Management <br>
+<div id="close_navigation" class="close_navigation " style="width:200px;height:50px;margin-left:55px;color:white;font-size:15px;display:none;cursor:pointer;">
+<span style="position:relative;top:15%;left:70%;"><i class="glyphicon glyphicon-chevron-left"></i></span>
+<br>
+<br>
+<!-- <li style="margin-bottom:10px;list-style:none;"><a href="#" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-user "><label style="padding-left:5px;">Clients</label></a> </li> -->
+<li style="margin-bottom:10px;list-style:none;"><a href="#" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-briefcase "><label style="padding-left:5px;word-spacing:-13px;">Service Providers</label></a> </li>
+<li style="margin-bottom:10px;list-style:none;"><a href="/projects" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-tasks "><label style="padding-left:5px;">Projects</label></a></li>
+<li style="margin-bottom:10px;list-style:none;"><a href="#" style="color:white;text-decoration: none;padding-left:5px;"><span class="glyphicon glyphicon-usd "><label style="padding-left:5px;word-spacing:-13px;">Payment Details</label></a></li>
+</div>
+<div id="show_navigation" class="show_navigation" style="width:100px;height:50px;margin-left:155px;color:white;font-size:30px;display:block;cursor:pointer;">
+<span style="position:relative;top:15%;right:135px;"><i class="glyphicon glyphicon-chevron-right"></i></span>
+</div>
+</div>
+<div class="main_data_section_view">
+<div class="home_main_div_section">
+<div class="home_main_links_section">
+<div class="row headers_section">
+ <div class=" col-md-4 header_first" style="font-weight:bold;font-size:30px;top:5px;font-family:Open Sans, Arial, Helvetica, sans-serif;">Client Management</div>
+      <div class=" col-md-4 header_middle" style="">
+        <div class="row" style="position:relative;top:10px;">
+          <div class="col-md-3 home_link" style="cursor:pointer;"> 
+           
+          </div>
+          <!-- <div class="col-md-3 projects_link" style="cursor:pointer;" >Projects</div>
+          <div class="col-md-3 invoice_link" style="cursor:pointer;" >Invoices</div>
+          <div class="Service_providers" style="cursor:pointer;" >Service Providers</div>   -->  
+        </div>
+      </div>
+<div class="col-md-4 header_last" style="">
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-3"></div>
+<div class="col-md-2"></div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+<%= link_to destroy_user_session_path, :method => :delete do%>
+<span class="glyphicon glyphicon-off gi-5x _home_sign_out" title="Sign Out" style="color:white;font-size:34px;position:relative;top:8px;cursor:pointer;">
+</span>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+<h2 class="log_in_statement">Tenants</h2>
+<br>
+ <div class="tenantshow" style="background-color:white">
+
+<div class="new_tenant_button"style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;text-align:right;color:black;font-weight:bold;" >
+               <%= link_to 'Add Tenant', new_tenant_path %>
+            </div>
+            <br>
+<div>
+
+ 
+<% @tenants.each do |tenant| %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Tenant id</th>
+      <th>Subdomain</th>
+      
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        <td><%= tenant.id %></td>
+        <td><%= tenant.subdomain %></td> 
+       <td><%= link_to 'Show', tenant %></td>
+       <td><%= link_to 'Edit', edit_tenant_path(tenant) %></td> 
+     <td><%= link_to 'Destroy', tenants_delete_path(tenant), method: :delete, data: { confirm: 'Are you sure?' } %></td>  
+      </tr></tbody></table>
+      <%end%>
+    </div></div></div></div></div>

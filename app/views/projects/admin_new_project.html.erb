@@ -1,0 +1,80 @@
+<body class="login_body" >
+
+<div class="log_in_and_sign_up"> 
+<h2 class="log_in_statement">new Project</h2>
+
+
+<%= form_with(model: @project) do |form| %>
+ <!--  <#% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><#%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <#% project.errors.each do |error| %>
+          <li><#%= error.full_message %></li>
+        <#% end %>
+      </ul>
+    </div>
+  <#% end %> -->
+
+  <div class="field">
+    <%= form.label :Project_name %>
+    <%= form.text_field :Project_name %>
+  </div>
+
+  <!-- <#%if current_user.role_id !='1' %> -->
+  <div class="field">
+   <!-- <#%= form.hidden_field :client_email, value: current_user.email%> -->
+  </div>
+  <!-- <#%end%> -->
+
+   <div class="field">
+    <%= form.label :Description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+     <label style="color:grey;font-size:14px;font-family: inherit;"> Client</label>
+    <%= form.select :Client_name,  User.all.where(role_id: 2).pluck(:first_name) %>
+    <!-- <#%= form.text_field :Client_name, value: %> -->
+  </div>
+  <div class="field">
+     <label style="color:grey;font-size:14px;font-family: inherit;"> Service Provider</label>
+    <%= form.select :service_provider,  User.all.where(role_id: 3).pluck(:first_name) %>
+    <!-- <#%= form.text_field :Client_name, value: %> -->
+  </div>
+<!--  <div class="field">
+    <#%= form.label :Service_provider %>
+    <#%= form.text_field :service_provider %>
+  </div> -->
+
+
+  <div class="field">
+    <label style="color:grey;font-size:14px;font-family: inherit;"> Developer</label>
+    <%= form.select :Developers,  User.all.where(role_id: 5).pluck(:first_name) %>
+    <!-- <#%= form.text_field :Client_name, value: %> -->
+   
+  </div>
+
+  <div class="field">
+    <%= form.label :Working_hours %>
+    <%= form.text_field :Working_hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Starting_date %>
+    <%= form.datetime_select :Starting_date %>
+  </div> 
+
+  <div class="field">
+   <%= form.hidden_field :user_id, value: current_user.id%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', projects_path %>
+</div>
+</body> 

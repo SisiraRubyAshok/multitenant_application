@@ -1,0 +1,524 @@
+<div id="admin_dash_board" class="main admin_home_dash_board_section">
+
+<div class="side_navigation">
+payment Details <br>
+<div id="close_navigation" class="close_navigation " style="width:200px;height:50px;margin-left:55px;color:white;font-size:15px;display:none;cursor:pointer;">
+<span style="position:relative;top:15%;left:70%;"><i class="glyphicon glyphicon-chevron-left"></i></span>
+<br>
+<br>
+<li style="margin-bottom:10px;list-style:none;"><a href="/client_in_adminview" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-user "><label style="padding-left:5px;">Clients</label></a> </li>
+<li style="margin-bottom:10px;list-style:none;"><a href="/sp_in_adminview" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-briefcase "><label style="padding-left:5px;word-spacing:-13px;">Service Providers</label></a> </li>
+<li style="margin-bottom:10px;list-style:none;"><a href="/projects" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-tasks "><label style="padding-left:5px;">Projects</label></a></li>
+<li style="margin-bottom:10px;list-style:none;"><a href="#" style="color:white;text-decoration: none;padding-left:5px;"><span class="glyphicon glyphicon-usd "><label style="padding-left:5px;word-spacing:-13px;">Payment Details</label></a></li>
+</div>
+<div id="show_navigation" class="show_navigation" style="width:100px;height:50px;margin-left:155px;color:white;font-size:30px;display:block;cursor:pointer;">
+<span style="position:relative;top:15%;right:135px;"><i class="glyphicon glyphicon-chevron-right"></i></span>
+</div>
+</div>
+
+<div class="main_data_section_view">
+<div class="home_main_div_section">
+<div class="home_main_links_section">
+<div class="row headers_section">
+<div class=" col-md-4 header_first" style="font-weight:bold;font-size:30px;top:5px;font-family:Open Sans, Arial, Helvetica, sans-serif;">Invoice Payment</div>
+<div class=" col-md-4 header_middle" style="">
+<div class="row" style="position:relative;top:10px;">
+<div class="col-md-3 home_link" style="cursor:pointer;">Home</div>
+<!--<div class="col-md-3 projects_link" style="cursor:pointer;" >Projects</div>
+<div class="col-md-3 invoice_link" style="cursor:pointer;" >Generated Invoices</div>
+<div class="Service_providers" style="cursor:pointer;" >clients</div>-->
+</div>
+</div>
+<div class="col-md-4 header_last" style="">
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-3"></div>
+<div class="col-md-2"></div>
+<div class="col-md-2">
+<%= link_to user_profile_way_url do%>
+<span class="glyphicon glyphicon-user gi-5x " title="User Profile" style="color:white;font-size:34px;position:relative;top:6px;cursor:pointer;">
+</span>
+<%end%>
+</div>
+<div class="col-md-2">
+<%= link_to destroy_user_session_path, :method => :delete do%>
+<span class="glyphicon glyphicon-off gi-5x _home_sign_out" title="Sign Out" style="color:white;font-size:34px;position:relative;top:8px;cursor:pointer;">
+</span>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row home_charts_section" style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;">
+<div class="col-md-4 chart_section" style="width:30%;">
+<label>Projects</label>
+<div id="chart-container1" style="width: 150px; height: 150px;"></div>
+</div>
+
+<div class="col-md-4 chart_section" style="width:30%;">
+<label>clients</label>
+<div id="chart-container2" style="width: 150px; height: 150px;">
+
+</div>
+</div>
+
+<div class="col-md-4 chart_section" style="width:30%;">
+<label>service Providers</label>
+<div id="chart-container3" style="width: 250px; height: 150px;"></div>
+</div>
+</div>
+
+<div class="row user_teams" style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;">
+<div class="row">
+<div class="col-md-4 chart_section" style="width:30%;">
+<label>Invoice Generated</label>
+<div id="monthly_billable" style="width: 250px; height: 150px;" ></div>
+</div>
+<div class="col-md-4 chart_section" style="width:30%;">
+<label>Pending Payment Count</label>
+<div id="weekly_billable" style="width: 250px; height: 150px;" ></div>
+</div>
+<div class="col-md-4 chart_section" style="width:30%;">
+<label>Payment Success Count</label>
+<div id="yearly_billable" style="width: 250px; height: 150px;" ></div>
+</div>
+</div>
+</div>
+<div class=" row user_teams " style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;text-align:center;color:grey;font-weight:bold;text-shadow: 7px 6px 8px grey;">
+Clients
+</div>
+<%5.times do |i|%>
+<!-- <div class=" row user_teams " style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;">
+Client Name <%=i%></br>
+<label>Client Detailes</label>
+<div class="row">
+<div class="project_edit" style="float:left;margin-left:15px;cursor:pointer;"><i class="glyphicon glyphicon-pencil"></i></div>
+<div class="project_view" style="float:left;margin-left:10px;cursor:pointer;"><i class="glyphicon glyphicon-search"></i></i></div>
+<div class="project_delete" style="float:left;margin-left:10px;cursor:pointer;"><i class="glyphicon glyphicon-trash"></i></div>
+</div>
+</div>-->
+<%end%>
+
+<div class="row" style="width:100%;margin-left:0px;margin-right:0px;">
+<br/>
+</div>
+</div>
+</div>
+<script>
+
+$(function() {
+// Create the chart
+chart = new Highcharts.Chart({
+chart: {
+renderTo: 'chart-container1',
+type: 'pie'
+},
+
+plotOptions: {
+pie: {
+shadow: true
+}
+},
+plotOptions: {
+solidgauge: {
+borderColor: '#009CE8',
+borderWidth: 40,
+radius: 90,
+innerRadius: '90%',
+dataLabels: {
+y: 5,
+borderWidth: 0,
+format: '{y}%',
+useHTML: true
+}
+}
+},
+title: {
+text: '60',
+align: 'center',
+verticalAlign: 'middle',
+color: 'black'
+},
+pane: {
+size: '100%',
+center: ['50%', '60%'],
+startAngle: -130,
+endAngle: 130,
+background: {
+borderWidth: 20,
+backgroundColor: '#DBDBDB',
+shape: 'arc',
+borderColor: '#DBDBDB',
+outerRadius: '90%',
+innerRadius: '90%'
+}
+},
+colors: [
+'#00ff00'
+],
+series: [{
+name: 'Projects',
+data: [["Total",60]],
+size: '100%',
+y:60,
+innerSize: '85%',
+format: '{y}%',
+showInLegend:false,
+dataLabels: {
+enabled: false
+}
+}],
+
+});
+});
+
+$(function() {
+// Create the chart
+chart = new Highcharts.Chart({
+chart: {
+renderTo: 'chart-container2',
+type: 'pie'
+},
+title: {
+text: ''
+},
+plotOptions: {
+pie: {
+shadow: true
+}
+},
+plotOptions: {
+solidgauge: {
+borderColor: '#009CE8',
+borderWidth: 40,
+radius: 90,
+innerRadius: '90%',
+dataLabels: {
+y: 5,
+borderWidth: 0,
+useHTML: true
+}
+}
+},
+title: {
+text: '20',
+align: 'center',
+verticalAlign: 'middle',
+color: 'black'
+},
+pane: {
+size: '100%',
+center: ['50%', '60%'],
+startAngle: -130,
+endAngle: 130,
+background: {
+borderWidth: 20,
+backgroundColor: '#DBDBDB',
+shape: 'arc',
+borderColor: '#DBDBDB',
+outerRadius: '90%',
+innerRadius: '90%'
+}
+},
+colors: [
+'#3366ff'
+],
+series: [{
+name: 'Clients',
+data: [["Total",100]],
+size: '100%',
+innerSize: '85%',
+showInLegend:false,
+dataLabels: {
+enabled: false
+}
+}]
+});
+});
+
+$(function() {
+// Create the chart
+chart = new Highcharts.Chart({
+chart: {
+renderTo: 'chart-container3',
+type: 'pie'
+},
+title: {
+text: ''
+},
+plotOptions: {
+pie: {
+shadow: true
+}
+},
+plotOptions: {
+solidgauge: {
+borderColor: '#009CE8',
+borderWidth: 40,
+radius: 90,
+innerRadius: '90%',
+dataLabels: {
+y: 5,
+borderWidth: 0,
+useHTML: true
+}
+}
+},
+title: {
+text: '100',
+align: 'center',
+verticalAlign: 'middle',
+color: 'black'
+},
+pane: {
+size: '100%',
+center: ['50%', '60%'],
+startAngle: -130,
+endAngle: 130,
+background: {
+borderWidth: 20,
+backgroundColor: '#DBDBDB',
+shape: 'arc',
+borderColor: '#DBDBDB',
+outerRadius: '90%',
+innerRadius: '90%'
+}
+},
+colors: [
+'#1affff'
+],
+series: [{
+name: 'Invoice Generated',
+data: [["Total",100]],
+size: '100%',
+innerSize: '85%',
+showInLegend:false,
+dataLabels: {
+enabled: false
+}
+}]
+});
+});
+
+$(function() {
+// Create the chart
+chart = new Highcharts.Chart({
+chart: {
+renderTo: 'monthly_billable',
+type: 'pie'
+},
+title: {
+text: ''
+},
+plotOptions: {
+pie: {
+shadow: true
+}
+},
+plotOptions: {
+solidgauge: {
+borderColor: '#009CE8',
+borderWidth: 40,
+radius: 90,
+innerRadius: '90%',
+dataLabels: {
+y: 5,
+borderWidth: 0,
+useHTML: true
+}
+}
+},
+title: {
+text: '100',
+align: 'center',
+verticalAlign: 'middle',
+color: 'black'
+},
+pane: {
+size: '100%',
+center: ['50%', '60%'],
+startAngle: -130,
+endAngle: 130,
+background: {
+borderWidth: 20,
+backgroundColor: '#DBDBDB',
+shape: 'arc',
+borderColor: '#DBDBDB',
+outerRadius: '90%',
+innerRadius: '90%'
+}
+},
+colors: [
+'red'
+],
+series: [{
+name: 'Invoice Generated',
+data: [["Total",10]],
+size: '100%',
+innerSize: '85%',
+showInLegend:false,
+dataLabels: {
+enabled: false
+}
+}]
+});
+});
+
+$(function() {
+// Create the chart
+chart = new Highcharts.Chart({
+chart: {
+renderTo: 'weekly_billable',
+type: 'pie'
+},
+title: {
+text: ''
+},
+plotOptions: {
+pie: {
+shadow: true
+}
+},
+plotOptions: {
+solidgauge: {
+borderColor: '#009CE8',
+borderWidth: 40,
+radius: 90,
+innerRadius: '90%',
+dataLabels: {
+y: 5,
+borderWidth: 0,
+useHTML: true
+}
+}
+},
+title: {
+text: '10',
+align: 'center',
+verticalAlign: 'middle',
+color: 'black'
+},
+pane: {
+size: '100%',
+center: ['50%', '60%'],
+startAngle: -130,
+endAngle: 130,
+background: {
+borderWidth: 20,
+backgroundColor: '#DBDBDB',
+shape: 'arc',
+borderColor: '#DBDBDB',
+outerRadius: '90%',
+innerRadius: '90%'
+}
+},
+colors: [
+'black'
+],
+series: [{
+name: 'Invoice Generated',
+data: [["Total",10]],
+size: '100%',
+innerSize: '85%',
+showInLegend:false,
+dataLabels: {
+enabled: false
+}
+}]
+});
+});
+
+$(function() {
+// Create the chart
+chart = new Highcharts.Chart({
+chart: {
+renderTo: 'yearly_billable',
+type: 'pie'
+},
+title: {
+text: ''
+},
+plotOptions: {
+pie: {
+shadow: true
+}
+},
+plotOptions: {
+solidgauge: {
+borderColor: '#009CE8',
+borderWidth: 40,
+radius: 90,
+innerRadius: '90%',
+dataLabels: {
+y: 5,
+borderWidth: 0,
+useHTML: true
+}
+}
+},
+title: {
+text: '90',
+align: 'center',
+verticalAlign: 'middle',
+color: 'black'
+},
+pane: {
+size: '100%',
+center: ['50%', '60%'],
+startAngle: -130,
+endAngle: 130,
+background: {
+borderWidth: 20,
+backgroundColor: '#DBDBDB',
+shape: 'arc',
+borderColor: '#DBDBDB',
+outerRadius: '90%',
+innerRadius: '90%'
+}
+},
+colors: [
+'green'
+],
+series: [{
+name: 'Invoice Generated',
+data: [["Total",80]],
+size: '100%',
+innerSize: '85%',
+showInLegend:false,
+dataLabels: {
+enabled: false
+}
+}]
+});
+});
+
+$(document).ready(function(){
+var height_value = $("#admin_dash_board").height();
+$('.side_navigation').css('height', height_value);
+});
+
+
+$(document).ready(function(){
+$( "#close_navigation" ).click(function() {
+$(".side_navigation").removeClass("expand_side_navigation");
+$(".main_data_section_view").removeClass("minimize_data_section");
+$("#close_navigation").hide();
+$("#show_navigation").show();
+$(".side_navigation").addClass("minmize_side_navigation");
+$(".main_data_section_view").addClass("expand_data_section");
+});
+});
+
+$(document).ready(function(){
+$("#show_navigation").click(function() {
+$("#close_navigation").show();
+$("#show_navigation").hide();
+$(".side_navigation").addClass("expand_side_navigation");
+$(".main_data_section_view").addClass("minimize_data_section");
+});
+});
+
+
+</script>
+</div>

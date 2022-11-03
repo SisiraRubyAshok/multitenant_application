@@ -1,0 +1,174 @@
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<div id="client_dash_board" class="main client_home_dash_board_section">
+
+<div class="side_navigation">
+payment Details <br>
+<div id="close_navigation" class="close_navigation " style="width:200px;height:50px;margin-left:55px;color:white;font-size:15px;display:none;cursor:pointer;">
+<span style="position:relative;top:15%;left:70%;"><i class="glyphicon glyphicon-chevron-left"></i></span>
+<br>
+<br>
+<!-- <li style="margin-bottom:10px;list-style:none;"><a href="#" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-briefcase "><label style="padding-left:5px;word-spacing:-13px;">Service Providers</label></a> </li> -->
+<li style="margin-bottom:10px;list-style:none;"><a href="/projects" style="color:white;text-decoration: none;padding-left:5px;"><span class=" glyphicon glyphicon-tasks "><label style="padding-left:5px;">Projects</label></a></li>
+<li style="margin-bottom:10px;list-style:none;"><a href="#" style="color:white;text-decoration: none;padding-left:5px;"><span class="glyphicon glyphicon-usd "><label style="padding-left:5px;word-spacing:-13px;">Invoices</label></a></li>
+</div>
+<div id="show_navigation" class="show_navigation" style="width:100px;height:50px;margin-left:155px;color:white;font-size:30px;display:block;cursor:pointer;">
+<span style="position:relative;top:15%;right:135px;"><i class="glyphicon glyphicon-chevron-right"></i></span>
+</div>
+</div>
+<!-- <div class="home_page_body" style="background-color:lightgrey;"> -->
+<div class="home_main_div_section">
+ <div class="home_main_links_section">
+<div class="row headers_section">
+<div class=" col-md-4 header_first" style="font-weight:bold;font-size:30px;top:5px;font-family:Open Sans, Arial, Helvetica, sans-serif;">Client Management</div>
+<div class=" col-md-4 header_middle" style="">
+    <div class="row" style="position:relative;top:10px;">
+          <div class="col-md-3 home_link" style="cursor:pointer; color: white"><%= link_to 'Home', user_client_home_dashboard_url %> </div>
+          <div class="col-md-3 projects_link" style="cursor:pointer;" >Projects</div>
+          <div class="col-md-3 invoice_link" style="cursor:pointer;" >Generated Invoices</div>
+          <div class="Service_providers" style="cursor:pointer;" >clients</div>    
+   </div>
+</div>
+<div class="col-md-4 header_last" style="">
+    <div class="row">
+       <div class="col-md-3"></div>
+       <div class="col-md-3"></div>
+       <div class="col-md-2"></div>
+       <div class="col-md-2">
+          <%= link_to  user_profile_way_url do%>
+              <span class="glyphicon glyphicon-user gi-5x " title="User Profile" style="color:white;font-size:34px;position:relative;top:6px;cursor:pointer;">
+              </span>
+           <%end%>
+       </div>
+        <div class="col-md-2">
+          <%= link_to destroy_user_session_path, :method => :delete  do%>
+            <span class="glyphicon glyphicon-off gi-5x _home_sign_out" title="Sign Out" style="color:white;font-size:34px;position:relative;top:8px;cursor:pointer;">
+            </span>
+          <% end %>
+        </div>
+   </div>
+ </div>
+</div>
+
+ <div class="new_project_button"style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;text-align:left;color:black;font-weight:bold;" >
+<!-- <div class="ui-widget">
+<label for="tags">Search task: </label>
+  <input id="tags">
+</div> -->
+
+ <!-- <div class="search align-right" input id="basics"> -->
+             <!-- <#%= form_tag(projects_search_path, :method => "get" ) do %>   <div class="input-group">   -->
+        <!--   <#%= search_field_tag :search, params[:search], placeholder: "Search Project", class: "form-control",id:"projectname_search" %>  -->
+          <!-- <div class="input-group">  -->
+             <!-- <div class="input-group-btn">   -->
+<!-- 
+          <#%= button_tag "search", :class => 'btn btn-primary fas fa-search',:name => nil%>  
+            <#%end%> -->
+<!-- </div> -->
+</div> 
+</div>
+   <!-- <div class="new_project_button"style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;text-align:right;color:black;font-weight:bold;" >
+               <%#= link_to 'Add a Client', client_new_project_path %>
+            </div> -->
+
+<div class=" row user_teams " style="width:95%;margin-top:20px;background-color:white;padding:20px;margin-left:30px;margin-right:0px;size:20px; text-align:center;color:grey;font-weight:bold;text-shadow: 7px 6px 8px grey;">
+      List of Serviceproviders
+   </div>
+
+ <!-- <h1 style="text-align: center;">Projects</h1> -->
+
+<div class="table-responsive">
+
+<% @projects.each do |project| %>
+<% @serviceprovider.where(first_name: project.service_provider).each do|sp|%>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Serviceprovider Details</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= sp.first_name + " " + sp.last_name %><br><br>
+        <%= sp.email %></td>
+        <td>
+          <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>List of Projects</th>
+        </tr>
+        </thead>
+    <tbody>
+        
+        <tr>
+          <td><%=project.Project_name%></td>
+        </tr>
+      
+      </tbody>
+      </table>
+      </td>
+    </tr>
+</tbody>
+</table>
+<% end %>
+<% end %>
+<%#= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+
+<script>
+
+
+    $(document).ready(function(){
+var height_value = $("#client_dash_board").height();
+$('.side_navigation').css('height', height_value);
+});
+
+
+$(document).ready(function(){
+$( "#close_navigation" ).click(function() {
+$(".side_navigation").removeClass("expand_side_navigation");
+$(".main_data_section_view").removeClass("minimize_data_section");
+$("#close_navigation").hide();
+$("#show_navigation").show();
+$(".side_navigation").addClass("minmize_side_navigation");
+$(".main_data_section_view").addClass("expand_data_section");
+});
+});
+
+$(document).ready(function(){
+$("#show_navigation").click(function() {
+$("#close_navigation").show();
+$("#show_navigation").hide();
+$(".side_navigation").addClass("expand_side_navigation");
+$(".main_data_section_view").addClass("minimize_data_section");
+});
+});
+
+$( function() {
+    var availableTags = [
+      "todo",
+      "hospital Management",
+      "pure loan"
+    ];
+    $( "#projectname_search" ).autocomplete({
+      source: availableTags
+    });
+  });
+ // $input = $("#projectname_search")
+ //        var options = {
+ //              url: function(phrase) {
+ //                return "projects/autocomplete.json?search=" + phrase;
+ //              },
+ //              getValue: "project_name",
+    
+ //            list: {
+ //            match: {
+ //            enabled: true
+ //          }}}
+      
+  
+ //          $input.easyAutocomplete(options);
+</script>
+<%#= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+

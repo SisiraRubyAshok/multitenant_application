@@ -1,0 +1,71 @@
+<body class="login_body" >
+
+<div class="log_in_and_sign_up"> 
+<h2 class="log_in_statement">new Project</h2>
+
+
+<%= form_with(model: @project) do |form| %>
+ <!--  <#% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><#%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <#% project.errors.each do |error| %>
+          <li><#%= error.full_message %></li>
+        <#% end %>
+      </ul>
+    </div>
+  <#% end %> -->
+
+  <div class="field">
+    <%= form.label :Project_name %>
+    <%= form.text_field :Project_name %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :Client_name, value: current_user.first_name%>
+  </div>
+
+  <div class="field">
+   <%= form.hidden_field :client_email, value: current_user.email%>
+  </div>
+
+   <div class="field">
+    <%= form.label :Description %>
+    <%= form.text_field :description %>
+  </div>
+ <div class="field">
+    <%= form.label :Service_provider %>
+    <%= form.text_field :service_provider %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :Developers %>
+    <%= form.text_field :Developers %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Working_hours %>
+    <%= form.text_field :Working_hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Starting_date %>
+    <%= form.datetime_select :Starting_date %>
+  </div>
+
+  <div class="field">
+     <%= form.hidden_field :user_id, value: current_user.id%>
+<!--     <#%= form.label :user_id %>
+    <#%= form.number_field :user_id %> -->
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', projects_path %>
+</div>
+</body> 

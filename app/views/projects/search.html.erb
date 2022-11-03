@@ -1,0 +1,16 @@
+
+<body class="login_body" >
+
+<div class="log_in_and_sign_up"> 
+
+<h3>Search Result</h3>  
+  <% @results.each do |result| %> 
+  Project Name : <%=result.Project_name%><br>
+  Description : <%=result.description%><br>
+  Client Name : <%=result.Client_name%><br>
+  Service Provider :<%=result.service_provider%><br>
+  Developers : <%=result.Developers%>
+    <% end %>
+<br>
+<%= link_to 'Back', projects_path %>
+</div></body>
